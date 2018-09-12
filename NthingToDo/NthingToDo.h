@@ -11,6 +11,7 @@
 #include "NT_ui_item_manager.h"
 
 class NT_window_item_edit;
+class NT_ui_item_manager;
 
 class NthingToDo : public QMainWindow
 {
@@ -24,7 +25,7 @@ public:
 	void mouseReleaseEvent(QMouseEvent *e);
 	void creatTrayIcon();
 
-	NT_ui_item_manager m_ui_item_manager;
+	NT_ui_item_manager* m_ui_item_manager;
 	QPoint last;
 	QSystemTrayIcon* m_p_systemTray;
 	QMenu* m_p_ContextMenu;

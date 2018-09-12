@@ -14,16 +14,26 @@ NthingToDo::NthingToDo(QWidget *parent)
 	centralWidget->setObjectName(QStringLiteral("centralWidget"));
 	centralWidget->setEnabled(true);
 	centralWidget->setMaximumSize(QSize(deskRect.width(), 20));
+	ui.horizontalLayoutWidget = new QWidget(centralWidget);
+	ui.horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+	ui.horizontalLayoutWidget->setGeometry(QRect(0, 0, 160, 80));
+	ui.horizontalLayout = new QHBoxLayout(ui.horizontalLayoutWidget);
+	ui.horizontalLayout->setSpacing(6);
+	ui.horizontalLayout->setContentsMargins(11, 11, 11, 11);
+	ui.horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+	ui.horizontalLayout->setContentsMargins(0, 0, 0, 0);
 	this->setCentralWidget(centralWidget);
 	
 	//this->setWindowTitle(QApplication::translate("NthingToDoClass", "NthingToDo", Q_NULLPTR));
 	QMetaObject::connectSlotsByName(this);
 
 	creatTrayIcon();
-	m_ui_item_manager.m_width = deskRect.width();//改成初始化？
-	m_ui_item_manager.set_centralWidget(centralWidget);
+	m_ui_item_manager = new NT_ui_item_manager();
+	m_ui_item_manager->m_width = deskRect.width();//改成初始化？
+	m_ui_item_manager->set_centralWidget(centralWidget);
+	m_ui_item_manager->set_mainWindows(this);
 	time_t t_now = time(NULL);
-	m_ui_item_manager.load_ui_item_from_db(t_now + 3600 * 24);
+	//m_ui_item_manager.load_ui_item_from_db(t_now + 3600 * 24);
 }
 
 

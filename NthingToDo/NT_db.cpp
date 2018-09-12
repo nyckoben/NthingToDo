@@ -57,8 +57,12 @@ int NT_db::get_item_data_from_db(time_t before_time, std::set<NT_item_data> &dat
 	{
 		return -1;
 	}
-
-	std::string sql = "SELECT * from " + m_table_name;
+	time_t tNow = time(NULL);
+	char tNow_s[64] = { 0 };
+	char tEnd_s[64] = { 0 };
+	itoa(tNow, tNow_s, 10);
+	itoa(tNow + 60 * 60 * 24, tEnd_s, 10);
+	std::string sql = "SELECT * from " + m_table_name + " where etime between " + tNow_s + " and " + tEnd_s + ";";
 
 	/* Execute SQL statement */
 	char *zErrMsg = 0;
