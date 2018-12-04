@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Nthing-JS</title>
+    </head>
+    <body>
+
+      <!-- 与名为app的vue实例关联 -->
+      <div id="app"> 
+        
+        <div >
+          <input  id="subject" type="text" placeholder="请输入事件名称" v-model="subject">
+        </div>
+        <div >
+          <input  id="etime" type="text" placeholder="请输入结束时间" v-model="etime">
+        </div>
+        <div >
+          <input  id="level" type="text" placeholder="请输入事件等级" v-model="level">
+        </div>
+        <div >
+          <button v-on:click="addEvent" style="margin-left: 110px;">添加事件</button>
+        </div>
+        <div id="echart" style="width:1500px; height: 100px;"></div>
+      </div>
+
+      <script src="node_modules\echarts\dist\echarts.min.js"></script>
+      <script src="vue.js"></script>
+      <script src="index.js"></script>
+     
+      </html>

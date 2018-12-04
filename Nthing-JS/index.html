@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>Nthing-JS</title>
-    </head>
-    <body>
-
-      <!-- 与名为app的vue实例关联 -->
-      <div id="app"> 
-        
-        <div >
-          <input  id="subject" type="text" placeholder="请输入事件名称" v-model="subject">
-        </div>
-        <div >
-          <input  id="etime" type="text" placeholder="请输入结束时间" v-model="etime">
-        </div>
-        <div >
-          <input  id="level" type="text" placeholder="请输入事件等级" v-model="level">
-        </div>
-        <div >
-          <button v-on:click="addEvent" style="margin-left: 110px;">添加事件</button>
-        </div>
-        <div id="echart" style="width:1500px; height: 100px;"></div>
-      </div>
-
-      <script src="node_modules\echarts\dist\echarts.min.js"></script>
-      <script src="vue.js"></script>
-      <script src="index.js"></script>
-     
-      </html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Nthing To Do</title>
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='lib/jquery.min.js'></script>
+    <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+    <script src='lib/moment.min.js'></script>
+    <script src='fullcalendar/fullcalendar.js'></script><!-- 解决electron和jquery冲突 -->
+  </head>
+  <body>
+    <div style='text-align:center;'>
+        <input type="text" id='input_title' value="New Event Name">
+        </br>
+        <input type="text" id='input_date' value="Format[2019-01-01 00:00]">
+        </br>
+        <button onclick="on_add_event()">Add Event</button>
+    </div>
+    </br>
+    <div id='calendar'></div>
+    <script src="n_calendar.js"></script>
+  </body>
+</html>
