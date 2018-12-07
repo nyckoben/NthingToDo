@@ -1,3 +1,5 @@
+var events = [];
+
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         header: {
@@ -51,11 +53,40 @@ function on_add_event(){
 }
 
 function getInitEvens(){
+    var file = "NtingToDo.db";
+    var sqliteDB = new SqliteDB(file);
+    var createTableSql = "create table if not exists t_nthing_events("
+        + "row_id integer NOT NULL AUTO_INCREMENT,"
+        + "gmt_time integer UNSIGNED NOT NULL,"
+        + "title varchar(64)"
+        + "stime integer UNSIGNED NOT NULL,"
+        + "etime integer UNSIGNED NOT NULL,"
+        + "PRIMARY KEY (row_id)"
+        + ");";
+    sqliteDB.createTable(createTableSql);
+
+ 
+    var querySql = 'select * from t_nthing_events;';
+    sqliteDB.queryData(querySql, getInitEvens_i);
+
+    return events;
+}
+
+
+ 
+function getInitEvens_i(objects){
+    for(var i = 0; i < objects.length; ++i)
+    {
+        console.log(objects[i]);
+    }
+
+    //var time = new Date(1472048779952);
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-    var events = [
+    
+    events = [
         {
             title: 'All Day Event',
             start: new Date(y, m, 1)
@@ -102,5 +133,4 @@ function getInitEvens(){
             url: '../../google.com/default.htm'
         }
     ];
-    return events;
 }
