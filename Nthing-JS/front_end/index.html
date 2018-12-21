@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <title>Nthing To Do</title>
+
     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-    <script src='lib/jquery.min.js'></script>
-    <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
-    <script src='lib/moment.min.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script><!-- 解决electron和jquery冲突 -->
+
+    <script src='jquery.min.js'></script>
+    <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script><!-- 解决electron和jquery冲突 -->
+
+    <script src='moment.min.js'></script>
+
+    <script src='fullcalendar/fullcalendar.js'></script>
+
   </head>
   <body>
     <div style='text-align:center;'>
@@ -16,10 +21,10 @@
         <input type="text" id='input_date' value="Format[2019-01-01 00:00]">
         </br>
         <button onclick="on_add_event()">Add Event</button>
+        <button onclick="on_init_event()">Init Event</button>
     </div>
     </br>
     <div id='calendar'></div>
     <script src="n_calendar.js"></script>
-    <script src="sqlite.js"></script>
   </body>
 </html>
