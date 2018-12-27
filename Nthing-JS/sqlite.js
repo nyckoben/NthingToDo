@@ -21,7 +21,7 @@ DB.SqliteDB = function(file){
 };
  
 DB.printErrorInfo = function(err){
-    console.log("Error Message:" + err.message + " ErrorNumber:" + errno);
+    console.log("Error Message:" + err.message + " ErrorNumber:" + err.errno);
 };
  
 DB.SqliteDB.prototype.createTable = function(sql){
